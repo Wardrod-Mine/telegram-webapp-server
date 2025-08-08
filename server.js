@@ -22,7 +22,12 @@ console.log("CHAT_ID:", ADMIN_CHAT_ID);
 app.post("/submit", async (req, res) => {
   const { activity, when, name, phone, people } = req.body;
 
-  const message = `🛥 Новая заявка\n\nМероприятие: ${activity}\nКогда: ${when}\nИмя: ${name}`;
+  const message = `🛥 Новая заявка
+  Мероприятие: ${activity}
+  Когда: ${when}
+  Имя: ${name}
+  Телефон: ${phone}
+  Количество человек: ${people}`;
 
   try {
     await axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
