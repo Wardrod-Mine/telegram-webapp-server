@@ -8,8 +8,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Замените на ваши реальные значения
-const TELEGRAM_BOT_TOKEN = '7304865246:AAHQqkXEBmdHpVIOcr_XPXM24NoOWMLzYww';
-const ADMIN_CHAT_ID = '1594687270';
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID;
+
 
 app.use(cors());
 app.use(bodyParser.json());
