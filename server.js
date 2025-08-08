@@ -31,10 +31,12 @@ app.post("/submit", async (req, res) => {
     });
     res.status(200).send("OK");
   } catch (error) {
-    console.error("Ошибка отправки:", error);
-    res.status(500).send("Ошибка отправки");
+      console.error("Ошибка отправки:", error.response?.data || error.message);
+      res.status(500).send("Ошибка отправки");
   }
+
 });
+
 
 app.listen(PORT, () => {
   console.log(`Сервер запущен на порту ${PORT}`);
