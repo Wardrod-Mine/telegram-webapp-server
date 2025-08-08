@@ -15,6 +15,10 @@ const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID;
 app.use(cors());
 app.use(bodyParser.json());
 
+console.log("TOKEN:", TELEGRAM_BOT_TOKEN);
+console.log("CHAT_ID:", ADMIN_CHAT_ID);
+
+
 app.post("/submit", async (req, res) => {
   const { activity, when, name } = req.body;
 
