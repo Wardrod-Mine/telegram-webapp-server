@@ -15,27 +15,20 @@ const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.post('/send-data', async (req, res) => {
-  const { name, activity, date } = req.body;
+app.post("/submit", async (req, res) => {
+  const { activity, when, name } = req.body;
 
-  const message = `
-📝 Новая заявка:
-👤 Имя: ${name}
-🏄 Активность: ${activity}
-⏰ Время: ${date}
-  `;
+  const message = `🛥 Новая заявка\n\nМероприятие: ${activity}\nКогда: ${when}\nИмя: ${name}`;
 
   try {
     await axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       chat_id: ADMIN_CHAT_ID,
       text: message,
-      parse_mode: 'HTML'
     });
-
-    res.status(200).json({ ok: true });
-  } catch (err) {
-    console.error('Ошибка отправки:', err.message);
-    res.status(500).json({ error: 'Не удалось отправить сообщение' });
+    res.status(200).send("OK");
+  } catch (error) {
+    console.error("Ошибка отправки:", error);
+    res.status(500).send("Ошибка отправки");
   }
 });
 
