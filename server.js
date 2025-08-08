@@ -20,7 +20,7 @@ console.log("CHAT_ID:", ADMIN_CHAT_ID);
 
 
 app.post("/submit", async (req, res) => {
-  const { activity, when, name } = req.body;
+  const { activity, when, name, phone, people } = req.body;
 
   const message = `🛥 Новая заявка\n\nМероприятие: ${activity}\nКогда: ${when}\nИмя: ${name}`;
 
